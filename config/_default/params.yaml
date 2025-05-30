@@ -61,4 +61,4 @@ features:
 
 # meta
 meta:
-  favicon: "/favicon.ico"
+  favicon: false
