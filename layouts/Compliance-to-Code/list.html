@@ -1,0 +1,9 @@
+{{ define "main" }}
+  <main style="max-width: 900px; margin: 0 auto; padding: 2rem 1rem; font-size: 1.1rem; background: #fff; box-shadow: 0 0 16px #eee; border-radius: 12px;">
+    {{ .Content }}
+  </main>
+  <style>
+    header, nav, footer, aside, .sidebar, .site-footer, .site-header, .main-menu { display: none !important; }
+    body { background: #f5f6fa; }
+  </style>
+{{ end }} 
