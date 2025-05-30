@@ -1,3 +1,10 @@
+---
+title: "Compliance-to-Code Poster"
+date: 2023-10-27T00:00:00Z # 你可以修改为实际日期
+outputs:
+  - html
+---
+
 > Note: 
 > 1. This repository is currently under construction. 
 > 2. This repository is for academic purposes only. It does not represent the views of any organization, institution, or individual, and should not be considered legal or investment advice.
