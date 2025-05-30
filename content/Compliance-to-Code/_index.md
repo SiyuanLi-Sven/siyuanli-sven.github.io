@@ -1,13 +1,22 @@
+<<<<<<< HEAD:content/Compliance-to-Code/_index.md
+=======
 ---
 title: "Compliance-to-Code Poster"
 date: 2024-07-27T10:00:00+08:00
 draft: false
-layout: "single"
-type: "Compliance-to-Code"
-url: "/compliance-to-code/"
+_build:
+  list: never
+  render: true
+menu:
+  main:
+    parent: ""
+    weight: -1 # Or some other appropriate weight
+    params:
+      hidden: true
 outputs:
   - html
 ---
+>>>>>>> parent of 80ddaa3 (test):content/compliance-to-code.md
 > Note: 
 > 1. This repository is currently under construction. 
 > 2. This repository is for academic purposes only. It does not represent the views of any organization, institution, or individual, and should not be considered legal or investment advice.
