@@ -2,7 +2,6 @@
 title: "Compliance-to-Code Poster"
 date: 2024-07-27T10:00:00+08:00
 draft: false
-layout: minimalist-paper
 _build:
   list: never
   render: true
