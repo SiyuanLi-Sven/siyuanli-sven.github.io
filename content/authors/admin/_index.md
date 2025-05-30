@@ -41,8 +41,8 @@ profiles:
     url: https://github.com/SiyuanLi-Sven
   - icon: brands/linkedin
     url: https://www.linkedin.com/in/siyuan-li-8b820b218/
-  # - icon: academicons/google-scholar
-  #   url: https://scholar.google.com/
+  - icon: academicons/google-scholar
+    url: https://scholar.google.com/citations?user=haYxQEwAAAAJ&hl=zh-CN
   # - icon: academicons/orcid
   #   url: https://orcid.org/
 
@@ -173,4 +173,4 @@ awards:
 
 ## About Me
 
-Siyuan LI is a Mphil student at HKUST(GZ). Currently, most of the content on this page comes with the template. I am gradually filling it out.
+Siyuan LI is a Mphil student at HKUST(GZ). Find me at lisiyuansven@foxmail.com. Currently, most of the content on this page comes with the template. I am gradually filling it out.
