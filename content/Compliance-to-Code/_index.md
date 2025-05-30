@@ -162,3 +162,9 @@ If you use the Compliance-to-Code dataset or the FinCheck pipeline in your resea
 The Compliance-to-Code dataset,  the code for the FinCheck pipeline and associated tools are licensed under the **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0) License**. Please refer to the `LICENSE` file in the GitHub repository and the Huggingface dataset card for more details.
 
 The regulatory documents used to create this dataset were publicly published by the Beijing Stock Exchange (BSE).
+
+---
+# Homepage
+type: landing # 表示这是一个着陆页/首页
+headless: true # 通常 Hugo Blox 的首页 _index.md 是 headless 的
+---
