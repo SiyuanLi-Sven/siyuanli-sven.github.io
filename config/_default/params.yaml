@@ -61,4 +61,4 @@ features:
 
 # meta
 meta:
-  favicon: false
+  favicon: true
