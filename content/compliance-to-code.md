@@ -2,8 +2,6 @@
 title: "Compliance-to-Code Poster"
 date: 2024-07-27T10:00:00+08:00
 draft: false
-type: "compliance-to-code"
-layout: "single"
 _build:
   list: never
   render: true
