@@ -78,7 +78,7 @@ work:
     company_name: HKUST Quant Trading Society
     company_url: https://ustquant.hk/
     company_logo: ''
-    date_start: Jun 2024
+    date_start: '2024-06-01'
     date_end: Present
     summary: |2-
       Responsibilities include:
@@ -89,8 +89,8 @@ work:
     company_name: Beijing Dingnuo Investment Co., Ltd.
     company_url: http://eyounginvest.com/dingnuo/about/about/index.html
     company_logo: http://eyounginvest.com/dingnuo/upload/picture/1632724944216-logo1.png
-    date_start: Jun 2024
-    date_end: Aug 2024
+    date_start: '2024-06-01'
+    date_end: '2024-08-01'
     summary: |
       Responsibilities include:
       - Led the development of a credit bond default rate prediction system.
@@ -103,8 +103,8 @@ work:
     company_name: GF Securities Co., Ltd.
     company_url: https://en.gf.com.cn/
     company_logo: https://media.licdn.com/dms/image/v2/C560BAQHrE9HCsUaYRQ/company-logo_200_200/company-logo_200_200/0/1638679395736/_logo?e=1754524800&v=beta&t=8IelipvmwdQtxfzae9mJOIB8bhFbubnWQb6gZ7rqT9s
-    date_start: Jun 2024
-    date_end: Aug 2024
+    date_start: '2024-06-01'
+    date_end: '2024-08-01'
     summary: |
       Responsibilities include:
       - Conducted in-depth industry research on the elderly care services sector.
@@ -172,7 +172,7 @@ awards:
   #     Learned:
   #     - Synthesize your own blockchain solutions
   #     - Gain an in-depth understanding of the specific mechanics of Bitcoin
-  #     - Understand Bitcoin’s real-life applications and learn how to attack and destroy Bitcoin, Ethereum, smart contracts and Dapps, and alternatives to Bitcoin’s Proof-of-Work consensus algorithm
+  #     - Understand Bitcoin's real-life applications and learn how to attack and destroy Bitcoin, Ethereum, smart contracts and Dapps, and alternatives to Bitcoin's Proof-of-Work consensus algorithm
   # - title: 'Object-Oriented Programming in R'
   #   url: https://www.datacamp.com/courses/object-oriented-programming-with-s3-and-r6-in-r
   #   certificate_url: https://www.datacamp.com
