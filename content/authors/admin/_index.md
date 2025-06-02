@@ -79,7 +79,7 @@ work:
     company_url: https://ustquant.hk/
     company_logo: ''
     date_start: '2024-06-01'
-    date_end: Present
+    date_end: ''
     summary: |2-
       Responsibilities include:
       - Provide comprehensive technical support, including website development and maintenance, and email system administration.
