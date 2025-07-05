@@ -46,6 +46,9 @@ profiles:
   # - icon: academicons/orcid
   #   url: https://orcid.org/
 
+# Profile Avatar
+avatar: profile-photo.jpg
+
 interests:
   - Artificial Intelligence
   - Computational Linguistics
@@ -103,8 +106,8 @@ work:
     company_name: GF Securities Co., Ltd.
     company_url: https://en.gf.com.cn/
     company_logo: https://media.licdn.com/dms/image/v2/C560BAQHrE9HCsUaYRQ/company-logo_200_200/company-logo_200_200/0/1638679395736/_logo?e=1754524800&v=beta&t=8IelipvmwdQtxfzae9mJOIB8bhFbubnWQb6gZ7rqT9s
-    date_start: 2024-06-01
-    date_end: 2024-08-01
+    date_start: 2023-02-01
+    date_end: 2023-06-01
     summary: |
       Responsibilities include:
       - Conducted in-depth industry research on the elderly care services sector.
@@ -146,7 +149,7 @@ skills:
 
 languages:
   - name: Chinese
-    percent: 100
+    percent: 90
   - name: English
     percent: 70
 
@@ -185,4 +188,4 @@ languages:
 
 ## About Me
 
-Siyuan LI is a Mphil student at HKUST(GZ). Find me at lisiyuansven@foxmail.com. Currently, most of the content on this page comes with the template. I am gradually filling it out.
+Siyuan LI is a Mphil student at HKUST(GZ). His research interests include LLM applications in finance, knowledge graphs, and NLP for financial compliance. He is currently working on the Compliance-to-Code project which enhances financial compliance checking through code generation. Feel free to contact him at lisiyuansven@foxmail.com.
