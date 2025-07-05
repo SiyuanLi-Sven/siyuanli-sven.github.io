@@ -31,29 +31,14 @@ sections:
           position: center
           parallax: false
   - block: markdown
-    id: research
     content:
       title: '📚 My Research'
       subtitle: ''
       text: |-
-        My research focuses on the following areas:
 
-        ### LLM Agent
-        Exploring how to leverage large language models to build intelligent agents, especially in the financial domain. Key projects include:
-        - **Compliance-to-Code**: An intelligent system that enhances financial compliance checking through code generation
-        - Development of intelligent assistants for financial text understanding and processing
-
-        ### Knowledge Graph
-        Construction and application of knowledge graphs in the financial domain:
-        - Structured representation of financial regulations
-        - Building and applying compliance unit graphs
-
-        ### NLP Financial Applications
-        Applications of natural language processing technologies in finance:
-        - Financial text analysis and processing
-        - Automated interpretation of regulatory texts and conversion to code
+        Coming Soon.
         
-        Feel free to reach out for research collaboration 😃
+        Please reach out to collaborate 😃
     design:
       columns: '1'
   - block: collection
