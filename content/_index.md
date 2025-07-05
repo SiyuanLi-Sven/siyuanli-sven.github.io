@@ -37,9 +37,7 @@ sections:
       text: |-
 
         LLM Agent, Knowledge Graph, NLP Financial applications. Auto-Financial Researching. 
-        
-        Please reach out to collaborate 😃
-        
+        Please reach out to collaborate.
     design:
       columns: '1'
   - block: collection
