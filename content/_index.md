@@ -22,14 +22,7 @@ sections:
       css_class: dark
       background:
         color: black
-        image:
-          # Add your image background to `assets/media/`.
-          filename: stacked-peaks.svg
-          filters:
-            brightness: 1.0
-          size: cover
-          position: center
-          parallax: false
+        # Matrix动画背景通过JavaScript动态添加，移除静态图片
   - block: markdown
     content:
       title: '📚 My Research'
