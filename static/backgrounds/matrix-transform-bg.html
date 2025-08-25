@@ -14,6 +14,17 @@
             display: block;
             background: linear-gradient(135deg, #0d1117 0%, #161b22 50%, #0d1117 100%);
         }
+        /* 确保完全遮挡下层MLP背景 */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #0d1117;
+            z-index: -1;
+        }
         .matrix-display {
             position: absolute;
             top: 20px;
@@ -109,7 +120,7 @@
                 this.height = window.innerHeight;
                 
                 // 将原点向右下方偏移，避免成为过于突出的视觉重心
-                this.centerX = this.width / 2 + this.width * 0.5;   // 向右偏移50%
+                this.centerX = this.width / 2 + this.width * 0.3;   // 向右偏移30%
                 this.centerY = this.height / 2 + this.height * 0.4;  // 向下偏移40%
                 this.scale = Math.min(this.width, this.height) / 30;  // 进一步调小scale，扩大显示范围
                 
