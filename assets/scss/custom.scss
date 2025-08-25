@@ -1,27 +1,3 @@
-// OPPO Sans 4.0 全站字体配置
-@font-face {
-  font-family: 'OPPO Sans';
-  src: url('/fonts/OPPO-Sans-4.0.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap; // 优化字体加载性能
-}
-
-// 全站字体应用
-body,
-html,
-.prose,
-.content {
-  font-family: 'OPPO Sans', 'PingFang SC', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-}
-
-// 标题也使用OPPO Sans
-h1, h2, h3, h4, h5, h6,
-.title,
-.navbar-brand {
-  font-family: 'OPPO Sans', 'PingFang SC', 'Microsoft YaHei', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
-}
-
 // 访问计数器样式
 .visit-counter-config {
   text-align: center;
