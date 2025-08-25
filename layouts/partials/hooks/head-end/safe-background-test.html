@@ -13,82 +13,37 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 1000);
 });
 
-// MLP神经网络全站背景 - 调试路径问题
+// MLP神经网络全站背景 - 使用static目录
 function createMLPBackgroundIframe() {
-    // 尝试多个可能的路径
-    const possiblePaths = [
-        '/mlp-bg.html',                    // Hugo编译后可能在根目录
-        './assets/media/mlp-bg.html',      // 相对路径
-        'assets/media/mlp-bg.html',        // 无斜杠开头
-        '/assets/media/mlp-bg.html',       // 原始路径
-        './mlp-bg.html'                    // 当前目录
-    ];
+    const mlpIframe = document.createElement('iframe');
+    mlpIframe.id = 'mlp-background-iframe';
+    mlpIframe.src = '/backgrounds/mlp-bg.html';
+    mlpIframe.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2000;
+        pointer-events: none;
+        border: none;
+        opacity: 0.3;
+        background: transparent;
+    `;
     
-    let currentPathIndex = 0;
+    mlpIframe.onload = function() {
+        console.log('✅ MLP background loaded successfully from /backgrounds/mlp-bg.html');
+    };
     
-    function tryNextPath() {
-        if (currentPathIndex >= possiblePaths.length) {
-            console.error('All MLP background paths failed, giving up');
-            return;
-        }
-        
-        const mlpIframe = document.createElement('iframe');
-        mlpIframe.id = 'mlp-background-iframe-' + currentPathIndex;
-        mlpIframe.src = possiblePaths[currentPathIndex];
-        mlpIframe.style.cssText = `
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -2000;
-            pointer-events: none;
-            border: none;
-            opacity: 0.3;
-            background: transparent;
-        `;
-        
-        console.log(`Trying MLP path ${currentPathIndex + 1}/${possiblePaths.length}: ${possiblePaths[currentPathIndex]}`);
-        
-        mlpIframe.onload = function() {
-            console.log(`✅ MLP background loaded successfully with path: ${possiblePaths[currentPathIndex]}`);
-            // 移除之前失败的iframe
-            for (let i = 0; i < currentPathIndex; i++) {
-                const oldIframe = document.getElementById('mlp-background-iframe-' + i);
-                if (oldIframe) oldIframe.remove();
-            }
-        };
-        
-        mlpIframe.onerror = function() {
-            console.warn(`❌ Failed to load MLP with path: ${possiblePaths[currentPathIndex]}`);
-            mlpIframe.remove();
-            currentPathIndex++;
-            setTimeout(tryNextPath, 500); // 延迟尝试下一个
-        };
-        
-        // 检查iframe内容是否为404页面
-        setTimeout(() => {
-            try {
-                const iframeDoc = mlpIframe.contentDocument || mlpIframe.contentWindow.document;
-                if (iframeDoc && (iframeDoc.title.includes('404') || iframeDoc.body.textContent.includes('not found'))) {
-                    console.warn(`❌ MLP path returned 404: ${possiblePaths[currentPathIndex]}`);
-                    mlpIframe.remove();
-                    currentPathIndex++;
-                    tryNextPath();
-                }
-            } catch (e) {
-                // 跨域问题，正常情况
-                console.log(`MLP iframe loaded (cross-origin): ${possiblePaths[currentPathIndex]}`);
-            }
-        }, 2000);
-        
-        document.body.insertBefore(mlpIframe, document.body.firstChild);
-    }
+    mlpIframe.onerror = function() {
+        console.warn('❌ Failed to load MLP background, removing iframe');
+        mlpIframe.remove();
+    };
     
-    tryNextPath();
+    document.body.insertBefore(mlpIframe, document.body.firstChild);
 }
 
-// Matrix About Me背景 - 调试路径问题
+// Matrix About Me背景 - 使用static目录
 function createMatrixAboutMeBackgroundIframe() {
     setTimeout(function() {
         // 寻找About Me section 
@@ -105,79 +60,34 @@ function createMatrixAboutMeBackgroundIframe() {
             return;
         }
         
-        // 尝试多个可能的路径
-        const possiblePaths = [
-            '/matrix-transform-bg.html',                    // Hugo编译后可能在根目录
-            './assets/media/matrix-transform-bg.html',      // 相对路径
-            'assets/media/matrix-transform-bg.html',        // 无斜杠开头
-            '/assets/media/matrix-transform-bg.html',       // 原始路径
-            './matrix-transform-bg.html'                    // 当前目录
-        ];
+        const matrixIframe = document.createElement('iframe');
+        matrixIframe.id = 'matrix-aboutme-background-iframe';
+        matrixIframe.src = '/backgrounds/matrix-transform-bg.html';
+        matrixIframe.style.cssText = `
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+            border: none;
+            opacity: 0.4;
+            background: transparent;
+        `;
         
-        let currentPathIndex = 0;
+        matrixIframe.onload = function() {
+            console.log('✅ Matrix background loaded successfully from /backgrounds/matrix-transform-bg.html');
+        };
         
-        function tryNextMatrixPath() {
-            if (currentPathIndex >= possiblePaths.length) {
-                console.error('All Matrix background paths failed, giving up');
-                return;
-            }
-            
-            const matrixIframe = document.createElement('iframe');
-            matrixIframe.id = 'matrix-aboutme-background-iframe-' + currentPathIndex;
-            matrixIframe.src = possiblePaths[currentPathIndex];
-            matrixIframe.style.cssText = `
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                z-index: 1;
-                pointer-events: none;
-                border: none;
-                opacity: 0.4;
-                background: transparent;
-            `;
-            
-            console.log(`Trying Matrix path ${currentPathIndex + 1}/${possiblePaths.length}: ${possiblePaths[currentPathIndex]}`);
-            
-            matrixIframe.onload = function() {
-                console.log(`✅ Matrix background loaded successfully with path: ${possiblePaths[currentPathIndex]}`);
-                // 移除之前失败的iframe
-                for (let i = 0; i < currentPathIndex; i++) {
-                    const oldIframe = document.getElementById('matrix-aboutme-background-iframe-' + i);
-                    if (oldIframe) oldIframe.remove();
-                }
-            };
-            
-            matrixIframe.onerror = function() {
-                console.warn(`❌ Failed to load Matrix with path: ${possiblePaths[currentPathIndex]}`);
-                matrixIframe.remove();
-                currentPathIndex++;
-                setTimeout(tryNextMatrixPath, 500);
-            };
-            
-            // 检查iframe内容是否为404页面
-            setTimeout(() => {
-                try {
-                    const iframeDoc = matrixIframe.contentDocument || matrixIframe.contentWindow.document;
-                    if (iframeDoc && (iframeDoc.title.includes('404') || iframeDoc.body.textContent.includes('not found'))) {
-                        console.warn(`❌ Matrix path returned 404: ${possiblePaths[currentPathIndex]}`);
-                        matrixIframe.remove();
-                        currentPathIndex++;
-                        tryNextMatrixPath();
-                    }
-                } catch (e) {
-                    // 跨域问题，正常情况
-                    console.log(`Matrix iframe loaded (cross-origin): ${possiblePaths[currentPathIndex]}`);
-                }
-            }, 2000);
-            
-            // 确保section有relative定位
-            aboutSection.style.position = 'relative';
-            aboutSection.appendChild(matrixIframe);
-        }
+        matrixIframe.onerror = function() {
+            console.warn('❌ Failed to load Matrix background, removing iframe');
+            matrixIframe.remove();
+        };
         
-        tryNextMatrixPath();
+        // 确保section有relative定位
+        aboutSection.style.position = 'relative';
+        aboutSection.appendChild(matrixIframe);
         
     }, 2000); // 延迟2秒，确保页面结构稳定
 }
