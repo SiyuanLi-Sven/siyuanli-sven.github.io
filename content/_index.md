@@ -21,8 +21,7 @@ sections:
     design:
       css_class: dark
       background:
-        color: black
-        # Matrix动画背景通过JavaScript动态添加，移除静态图片
+        # Matrix动画背景通过JavaScript动态添加，移除静态图片和背景色
   - block: markdown
     content:
       title: '📚 My Research'
