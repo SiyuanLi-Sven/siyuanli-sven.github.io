@@ -69,7 +69,7 @@ function createMatrixAboutMeBackgroundIframe() {
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -100;
+            z-index: 0;
             pointer-events: none;
             border: none;
             opacity: 0.4;
@@ -85,9 +85,24 @@ function createMatrixAboutMeBackgroundIframe() {
             matrixIframe.remove();
         };
         
-        // 确保section有relative定位
+        // 创建包装容器来控制层级
+        const backgroundWrapper = document.createElement('div');
+        backgroundWrapper.style.cssText = `
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        `;
+        
+        backgroundWrapper.appendChild(matrixIframe);
+        
+        // 确保section有relative定位和层级上下文
         aboutSection.style.position = 'relative';
-        aboutSection.appendChild(matrixIframe);
+        aboutSection.style.zIndex = '0';
+        aboutSection.insertBefore(backgroundWrapper, aboutSection.firstChild);
         
     }, 2000); // 延迟2秒，确保页面结构稳定
 }
