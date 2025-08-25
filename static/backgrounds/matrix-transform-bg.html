@@ -111,7 +111,7 @@
                 // 将原点向右下方偏移，避免成为过于突出的视觉重心
                 this.centerX = this.width / 2 + this.width * 0.4;   // 向右偏移40%
                 this.centerY = this.height / 2 + this.height * 0.3;  // 向下偏移30%
-                this.scale = Math.min(this.width, this.height) / 22;  // 稍微调小scale
+                this.scale = Math.min(this.width, this.height) / 30;  // 进一步调小scale，扩大显示范围
                 
                 // 重新创建网格以适应新尺寸
                 if (this.gridLines) {
