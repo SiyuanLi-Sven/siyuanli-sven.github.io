@@ -1,23 +1,24 @@
 <script>
-// 双层背景系统：MLP全站背景 + Matrix About Me背景
+// 双层背景系统：忠实使用assets/media HTML文件通过iframe
 document.addEventListener('DOMContentLoaded', function() {
     // 延迟加载确保页面完全渲染
     setTimeout(function() {
         
-        // === 1. 创建MLP全站背景 ===
-        createMLPBackground();
+        // === 1. 创建MLP全站背景iframe ===
+        createMLPBackgroundIframe();
         
-        // === 2. 创建Matrix About Me背景 ===
-        createMatrixAboutMeBackground();
+        // === 2. 创建Matrix About Me背景iframe ===
+        createMatrixAboutMeBackgroundIframe();
         
     }, 1000);
 });
 
-// MLP神经网络全站背景（轻量化版本）
-function createMLPBackground() {
-    const mlpContainer = document.createElement('div');
-    mlpContainer.id = 'mlp-background';
-    mlpContainer.style.cssText = `
+// MLP神经网络全站背景 - 忠实使用assets/media/mlp-bg.html
+function createMLPBackgroundIframe() {
+    const mlpIframe = document.createElement('iframe');
+    mlpIframe.id = 'mlp-background-iframe';
+    mlpIframe.src = '/assets/media/mlp-bg.html';
+    mlpIframe.style.cssText = `
         position: fixed;
         top: 0;
         left: 0;
@@ -25,261 +26,71 @@ function createMLPBackground() {
         height: 100%;
         z-index: -2000;
         pointer-events: none;
-        opacity: 0.08;
+        border: none;
+        opacity: 0.3;
+        background: transparent;
     `;
     
-    const mlpCanvas = document.createElement('canvas');
-    mlpContainer.appendChild(mlpCanvas);
+    // 添加加载完成处理
+    mlpIframe.onload = function() {
+        console.log('MLP background loaded successfully');
+    };
     
-    // 简化的MLP背景动画类
-    class SimplifiedMLPBackground {
-        constructor(canvas) {
-            this.canvas = canvas;
-            this.ctx = canvas.getContext('2d');
-            this.setupCanvas();
-            this.init();
-            this.animate();
-            window.addEventListener('resize', () => this.setupCanvas());
-        }
-        
-        setupCanvas() {
-            this.canvas.width = window.innerWidth;
-            this.canvas.height = window.innerHeight;
-            this.canvas.style.width = '100%';
-            this.canvas.style.height = '100%';
-            this.width = window.innerWidth;
-            this.height = window.innerHeight;
-        }
-        
-        init() {
-            this.time = 0;
-            this.nodes = [];
-            const nodeCount = 20; // 简化节点数量
-            for (let i = 0; i < nodeCount; i++) {
-                this.nodes.push({
-                    x: Math.random() * this.width,
-                    y: Math.random() * this.height,
-                    vx: (Math.random() - 0.5) * 0.2,
-                    vy: (Math.random() - 0.5) * 0.2,
-                    activation: Math.random()
-                });
-            }
-        }
-        
-        animate() {
-            this.time += 0.005;
-            this.ctx.fillStyle = 'rgba(13, 17, 23, 0.1)';
-            this.ctx.fillRect(0, 0, this.width, this.height);
-            
-            // 更新和绘制节点
-            this.nodes.forEach(node => {
-                node.x += node.vx;
-                node.y += node.vy;
-                if (node.x < 0 || node.x > this.width) node.vx *= -1;
-                if (node.y < 0 || node.y > this.height) node.vy *= -1;
-                
-                const alpha = 0.1 + 0.1 * Math.sin(this.time + node.activation * Math.PI * 2);
-                this.ctx.fillStyle = `rgba(136, 136, 255, ${alpha})`;
-                this.ctx.beginPath();
-                this.ctx.arc(node.x, node.y, 2, 0, Math.PI * 2);
-                this.ctx.fill();
-            });
-            
-            requestAnimationFrame(() => this.animate());
-        }
-    }
+    mlpIframe.onerror = function() {
+        console.warn('Failed to load MLP background, removing iframe');
+        mlpIframe.remove();
+    };
     
-    new SimplifiedMLPBackground(mlpCanvas);
-    document.body.insertBefore(mlpContainer, document.body.firstChild);
+    document.body.insertBefore(mlpIframe, document.body.firstChild);
 }
 
-// Matrix About Me背景
-function createMatrixAboutMeBackground() {
+// Matrix About Me背景 - 忠实使用assets/media/matrix-transform-bg.html
+function createMatrixAboutMeBackgroundIframe() {
     setTimeout(function() {
-        // 寻找About Me section (resume-biography-3 block)
-        const aboutSection = document.querySelector('.resume-biography-3') || 
-                           document.querySelector('[class*="biography"]') ||
-                           document.querySelector('section').parentElement;
+        // 寻找About Me section 
+        const aboutSection = 
+            document.querySelector('[class*="resume-biography"]') || 
+            document.querySelector('[class*="biography"]') ||
+            document.querySelector('.hero-section') ||
+            document.querySelector('section[class*="dark"]') ||
+            document.querySelector('section:first-of-type');
         
-        if (!aboutSection) return;
+        console.log('Looking for About Me section:', aboutSection);
+        if (!aboutSection) {
+            console.warn('Could not find About Me section for Matrix background');
+            return;
+        }
         
-        // 创建Matrix背景容器，只覆盖About Me区域
-        const matrixContainer = document.createElement('div');
-        matrixContainer.id = 'matrix-aboutme-background';
-        matrixContainer.style.cssText = `
+        // 创建Matrix背景iframe
+        const matrixIframe = document.createElement('iframe');
+        matrixIframe.id = 'matrix-aboutme-background-iframe';
+        matrixIframe.src = '/assets/media/matrix-transform-bg.html';
+        matrixIframe.style.cssText = `
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -100;
+            z-index: 1;
             pointer-events: none;
-            opacity: 0.12;
+            border: none;
+            opacity: 0.4;
+            background: transparent;
         `;
         
-        canvas.style.cssText = `
-            display: block;
-            width: 100%;
-            height: 100%;
-        `;
+        // 添加加载处理
+        matrixIframe.onload = function() {
+            console.log('Matrix About Me background loaded successfully');
+        };
         
-        matrixContainer.appendChild(canvas);
+        matrixIframe.onerror = function() {
+            console.warn('Failed to load Matrix background, removing iframe');
+            matrixIframe.remove();
+        };
         
-        // About Me专用的Matrix动画类（调整适合section尺寸）
-        class MatrixAboutMeAnimation {
-            constructor(canvas, container) {
-                this.canvas = canvas;
-                this.container = container;
-                this.ctx = canvas.getContext('2d');
-                this.setupCanvas();
-                this.init();
-                this.animate();
-                window.addEventListener('resize', () => this.setupCanvas());
-            }
-            
-            setupCanvas() {
-                const rect = this.container.getBoundingClientRect();
-                this.canvas.width = rect.width;
-                this.canvas.height = rect.height;
-                this.width = rect.width;
-                this.height = rect.height;
-                
-                // 调整中心点和缩放比例，适合About Me section
-                this.centerX = this.width / 2;
-                this.centerY = this.height / 2;
-                this.scale = Math.min(this.width, this.height) / 15; // 更适合section的比例
-                
-                if (this.gridLines) {
-                    this.gridLines = this.createGridLines();
-                }
-            }
-            
-            init() {
-                this.time = 0;
-                this.animationSpeed = 0.008; // 稍微慢一点
-                
-                this.transformations = [
-                    { name: "Identity", matrix: [1, 0, 0, 1], duration: 3 },
-                    { name: "Rotation", matrix: [Math.cos(Math.PI/6), -Math.sin(Math.PI/6), Math.sin(Math.PI/6), Math.cos(Math.PI/6)], duration: 4 },
-                    { name: "Scale", matrix: [1.2, 0, 0, 0.8], duration: 3 },
-                    { name: "Shear", matrix: [1, 0.3, 0, 1], duration: 3 }
-                ];
-                
-                this.totalDuration = this.transformations.reduce((sum, t) => sum + t.duration, 0);
-                this.gridLines = this.createGridLines();
-            }
-            
-            createGridLines() {
-                const lines = [];
-                const rangeX = Math.ceil(this.width / this.scale) + 1;
-                const rangeY = Math.ceil(this.height / this.scale) + 1;
-                
-                for (let x = -rangeX; x <= rangeX; x++) {
-                    lines.push({
-                        start: { x: x, y: -rangeY },
-                        end: { x: x, y: rangeY },
-                        isAxis: x === 0
-                    });
-                }
-                
-                for (let y = -rangeY; y <= rangeY; y++) {
-                    lines.push({
-                        start: { x: -rangeX, y: y },
-                        end: { x: rangeX, y: y },
-                        isAxis: y === 0
-                    });
-                }
-                
-                return lines;
-            }
-            
-            getCurrentTransformation() {
-                const cycle = (this.time * this.animationSpeed) % this.totalDuration;
-                let elapsed = 0;
-                
-                for (let i = 0; i < this.transformations.length; i++) {
-                    const transform = this.transformations[i];
-                    if (cycle <= elapsed + transform.duration) {
-                        const progress = (cycle - elapsed) / transform.duration;
-                        const nextIndex = (i + 1) % this.transformations.length;
-                        const current = transform.matrix;
-                        const next = this.transformations[nextIndex].matrix;
-                        const t = 0.5 * (1 - Math.cos(Math.PI * progress));
-                        
-                        return [
-                            current[0] + (next[0] - current[0]) * t,
-                            current[1] + (next[1] - current[1]) * t,
-                            current[2] + (next[2] - current[2]) * t,
-                            current[3] + (next[3] - current[3]) * t
-                        ];
-                    }
-                    elapsed += transform.duration;
-                }
-                
-                return [1, 0, 0, 1];
-            }
-            
-            transformPoint(x, y, matrix) {
-                return {
-                    x: matrix[0] * x + matrix[1] * y,
-                    y: matrix[2] * x + matrix[3] * y
-                };
-            }
-            
-            toScreenCoords(x, y) {
-                return {
-                    x: this.centerX + x * this.scale,
-                    y: this.centerY - y * this.scale
-                };
-            }
-            
-            drawGrid(matrix) {
-                this.ctx.save();
-                
-                this.gridLines.forEach(line => {
-                    const transformedStart = this.transformPoint(line.start.x, line.start.y, matrix);
-                    const transformedEnd = this.transformPoint(line.end.x, line.end.y, matrix);
-                    
-                    const screenStart = this.toScreenCoords(transformedStart.x, transformedStart.y);
-                    const screenEnd = this.toScreenCoords(transformedEnd.x, transformedEnd.y);
-                    
-                    this.ctx.beginPath();
-                    this.ctx.moveTo(screenStart.x, screenStart.y);
-                    this.ctx.lineTo(screenEnd.x, screenEnd.y);
-                    
-                    if (line.isAxis) {
-                        this.ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
-                        this.ctx.lineWidth = 1;
-                    } else {
-                        this.ctx.strokeStyle = 'rgba(255, 255, 255, 0.06)';
-                        this.ctx.lineWidth = 0.5;
-                    }
-                    
-                    this.ctx.stroke();
-                });
-                
-                this.ctx.restore();
-            }
-            
-            animate() {
-                this.time++;
-                
-                // 透明背景，让Hugo的背景色透过来
-                this.ctx.clearRect(0, 0, this.width, this.height);
-                
-                const currentMatrix = this.getCurrentTransformation();
-                this.drawGrid(currentMatrix);
-                
-                requestAnimationFrame(() => this.animate());
-            }
-        }
-        
-        // 确保aboutSection有relative定位
+        // 确保section有relative定位
         aboutSection.style.position = 'relative';
-        aboutSection.appendChild(matrixContainer);
-        
-        // 启动Matrix About Me动画
-        new MatrixAboutMeAnimation(canvas, aboutSection);
+        aboutSection.appendChild(matrixIframe);
         
     }, 2000); // 延迟2秒，确保页面结构稳定
 }
