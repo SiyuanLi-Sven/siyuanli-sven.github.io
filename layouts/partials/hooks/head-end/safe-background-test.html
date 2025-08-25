@@ -4,10 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // 延迟加载确保页面完全渲染
     setTimeout(function() {
         
-        // === 1. 创建MLP全站背景iframe ===
-        createMLPBackgroundIframe();
-        
-        // === 2. 创建Matrix About Me背景iframe ===
+        // === 1. 先创建Matrix About Me背景iframe ===
+        // Matrix加载完成后会自动触发MLP背景加载
         createMatrixAboutMeBackgroundIframe();
         
     }, 1000);
@@ -78,6 +76,13 @@ function createMatrixAboutMeBackgroundIframe() {
         
         matrixIframe.onload = function() {
             console.log('✅ Matrix background loaded successfully from /backgrounds/matrix-transform-bg.html');
+            // Matrix加载完成后，延迟加载MLP背景（如果还未加载）
+            if (!document.getElementById('mlp-background-iframe')) {
+                setTimeout(function() {
+                    console.log('🔄 Starting MLP background after Matrix loaded');
+                    createMLPBackgroundIframe();
+                }, 300);
+            }
         };
         
         matrixIframe.onerror = function() {
