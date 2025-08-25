@@ -1,3 +1,25 @@
+// 全站字体设置
+:root {
+  --font-family-primary: 'SF Pro Text', 'PingFang SC', 'Microsoft YaHei', 'Arial', 'Helvetica Neue', sans-serif;
+  --font-family-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', 'Consolas', monospace;
+  --font-family-heading: 'SF Pro Display', 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', sans-serif;
+}
+
+// 应用字体到全站
+body {
+  font-family: var(--font-family-primary) !important;
+}
+
+// 标题字体
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-heading) !important;
+}
+
+// 代码字体
+code, pre, .hljs {
+  font-family: var(--font-family-mono) !important;
+}
+
 // 访问计数器样式
 .visit-counter-config {
   text-align: center;
