@@ -5,8 +5,15 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(function() {
         
         // === 1. 先创建Matrix About Me背景iframe ===
-        // Matrix加载完成后会自动触发MLP背景加载
         createMatrixAboutMeBackgroundIframe();
+        
+        // === 2. 备用MLP背景加载机制，防止Matrix加载失败时MLP永远不加载 ===
+        setTimeout(function() {
+            if (!document.getElementById('mlp-background-iframe')) {
+                console.log('🔄 Fallback: Loading MLP background (Matrix may have failed)');
+                createMLPBackgroundIframe();
+            }
+        }, 3000); // 3秒后如果MLP还未加载，强制加载
         
     }, 1000);
 });
@@ -55,6 +62,11 @@ function createMatrixAboutMeBackgroundIframe() {
         console.log('Looking for About Me section:', aboutSection);
         if (!aboutSection) {
             console.warn('Could not find About Me section for Matrix background');
+            // About Me section找不到时，立即加载MLP背景
+            if (!document.getElementById('mlp-background-iframe')) {
+                console.log('🔄 No About Me section, loading MLP background immediately');
+                createMLPBackgroundIframe();
+            }
             return;
         }
         
@@ -88,6 +100,13 @@ function createMatrixAboutMeBackgroundIframe() {
         matrixIframe.onerror = function() {
             console.warn('❌ Failed to load Matrix background, removing iframe');
             matrixIframe.remove();
+            // Matrix加载失败时，立即尝试加载MLP背景
+            if (!document.getElementById('mlp-background-iframe')) {
+                console.log('🔄 Matrix failed, loading MLP background immediately');
+                setTimeout(function() {
+                    createMLPBackgroundIframe();
+                }, 100);
+            }
         };
         
         // 创建包装容器来控制层级
