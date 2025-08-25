@@ -72,7 +72,7 @@ function createMatrixAboutMeBackgroundIframe() {
             z-index: 0;
             pointer-events: none;
             border: none;
-            opacity: 0.4;
+            opacity: 0.6;
             background: transparent;
         `;
         
@@ -87,14 +87,16 @@ function createMatrixAboutMeBackgroundIframe() {
         
         // 创建包装容器来控制层级
         const backgroundWrapper = document.createElement('div');
+        backgroundWrapper.id = 'matrix-background-wrapper';
         backgroundWrapper.style.cssText = `
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: -1;
+            z-index: 1;
             pointer-events: none;
+            background: rgba(255, 0, 0, 0.1);
         `;
         
         backgroundWrapper.appendChild(matrixIframe);
@@ -103,6 +105,15 @@ function createMatrixAboutMeBackgroundIframe() {
         aboutSection.style.position = 'relative';
         aboutSection.style.zIndex = '0';
         aboutSection.insertBefore(backgroundWrapper, aboutSection.firstChild);
+        
+        // 调试信息
+        console.log('Matrix background wrapper created and inserted');
+        console.log('About section style:', {
+            position: aboutSection.style.position,
+            zIndex: aboutSection.style.zIndex,
+            height: aboutSection.offsetHeight + 'px',
+            width: aboutSection.offsetWidth + 'px'
+        });
         
     }, 2000); // 延迟2秒，确保页面结构稳定
 }
