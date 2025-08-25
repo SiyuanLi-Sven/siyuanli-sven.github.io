@@ -7,8 +7,6 @@
 appearance:
   mode: system
   color: emerald
-  font: native  # 可选: native, minimal, classic, rose
-  font_size: M  # 可选: XS, S, M, L, XL
 
 # SEO
 marketing:
