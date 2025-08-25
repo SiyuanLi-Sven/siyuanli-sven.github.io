@@ -13,8 +13,8 @@ document.addEventListener('DOMContentLoaded', function() {
         counterContainer.id = 'visit-counter';
         counterContainer.style.cssText = `
             text-align: center;
-            margin: 2rem 0;
-            padding: 1rem 0;
+            margin: 1rem 0 0.5rem 0;
+            padding: 1rem 0 0.5rem 0;
             border-top: 1px solid #e5e7eb;
             opacity: 0;
             transition: opacity 0.3s ease-in-out;
@@ -57,11 +57,18 @@ document.addEventListener('DOMContentLoaded', function() {
         counterContainer.appendChild(counterImg);
         counterContainer.appendChild(thankText);
         
-        // 插入到页面底部（在footer之前）
+        // 找到版权信息并插入到其正上方
         const footer = document.querySelector('footer');
-        if (footer) {
-            footer.parentNode.insertBefore(counterContainer, footer);
+        const copyrightElement = footer ? footer.querySelector('p') : null;
+        
+        if (copyrightElement) {
+            // 插入到版权信息的正上方
+            copyrightElement.parentNode.insertBefore(counterContainer, copyrightElement);
+        } else if (footer) {
+            // 如果找不到版权信息，插入到footer内部的开头
+            footer.insertBefore(counterContainer, footer.firstChild);
         } else {
+            // 最后的备选方案
             document.body.appendChild(counterContainer);
         }
     }, 1000); // 延迟1秒加载
