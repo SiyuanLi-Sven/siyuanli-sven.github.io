@@ -47,7 +47,6 @@ function createMLPBackgroundIframe() {
 
 // Matrix About Me背景 - 使用static目录
 function createMatrixAboutMeBackgroundIframe() {
-    setTimeout(function() {
         // 寻找About Me section 
         const aboutSection = 
             document.querySelector('[class*="resume-biography"]') || 
@@ -74,7 +73,7 @@ function createMatrixAboutMeBackgroundIframe() {
             z-index: -1;
             pointer-events: none;
             border: none;
-            opacity: 0.8;
+            opacity: 0.4;
             background: transparent;
         `;
         
@@ -98,6 +97,7 @@ function createMatrixAboutMeBackgroundIframe() {
             height: 100%;
             z-index: -10;
             pointer-events: none;
+            background: #0d1117;
         `;
         
         backgroundWrapper.appendChild(matrixIframe);
@@ -116,7 +116,5 @@ function createMatrixAboutMeBackgroundIframe() {
             height: aboutSection.offsetHeight + 'px',
             width: aboutSection.offsetWidth + 'px'
         });
-        
-    }, 2000); // 延迟2秒，确保页面结构稳定
 }
 </script>
