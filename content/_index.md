@@ -100,13 +100,4 @@ sections:
       # Reduce spacing
       spacing:
         padding: [0, 0, 0, 0]
-  - block: markdown
-    content:
-      text: |-
-        <div style="text-align: center; margin-top: 2rem;">
-          <img src="https://count.getloli.com/@siyuanli-sven?name=siyuanli-sven&theme=moebooru&padding=7&offset=0&align=top&scale=1&pixelated=1&darkmode=auto" alt="访问计数" />
-        </div>
-    design:
-      spacing:
-        padding: ["1rem", 0, "2rem", 0]
 ---
