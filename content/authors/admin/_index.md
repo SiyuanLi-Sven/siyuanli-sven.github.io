@@ -185,4 +185,4 @@ languages:
 
 ## About Me
 
-Siyuan LI is a Mphil student at HKUST(GZ). Find me at lisiyuansven@foxmail.com. Currently, most of the content on this page comes with the template. I am gradually filling it out.
+Siyuan LI is an Mphil student at HKUST(GZ). Find me at lisiyuansven@foxmail.com. Currently, most of the content on this page comes with the template. I am gradually filling it out.
