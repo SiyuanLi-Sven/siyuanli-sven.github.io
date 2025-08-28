@@ -2,7 +2,27 @@
 title: 'Compliance-to-Code: Enhancing Financial Compliance Checking via Code Generation'
 authors:
   - admin
+  - Jian Chen
+  - Rui Yao
+  - Xuming Hu
+  - Peilin Zhou
+  - Weihua Qiu
+  - Simin Zhang
+  - Chucheng Dong
+  - Zhiyao Li
+  - Qipeng Xie
+  - Zixuan Yuan
 author_notes:
+  - 'Equal contribution'
+  - 'Equal contribution'
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
+  - ''
   - ''
 date: '2025-05-19T00:00:00Z'
 doi: ''
@@ -36,33 +56,17 @@ projects: []
 slides: ""
 ---
 
-## Overview
+## Abstract
 
-This paper presents the **Compliance-to-Code** dataset and **FinCheck** compliance checking pipeline, addressing key challenges in Chinese financial regulatory compliance automation.
+This paper presents Compliance-to-Code, a large-scale Chinese dataset for financial regulatory compliance, containing 1,159 annotated clauses from 361 regulations across ten categories. Each clause is structured with four logical elements: subject, condition, constraint, and contextual information. The dataset includes deterministic Python code mappings and detailed reasoning to facilitate automated compliance checking.
 
-## Key Contributions
+## Dataset Overview
 
-1. **Compliance-to-Code Dataset**: The first large-scale dataset dedicated to Chinese financial regulatory compliance, featuring:
-   - 1,159 annotated clauses from 361 regulations across ten categories
-   - Each clause modularly structured with four logical elements: subject, condition, constraint, and contextual information
-   - 307 executable Python compliance automation tasks with detailed reasoning
+- **Scale**: 1,159 annotated regulatory clauses
+- **Coverage**: 361 regulations across ten financial categories  
+- **Structure**: Modular compliance units with logical elements
+- **Code Mappings**: Python implementations for automated checking
 
-2. **FinCheck Pipeline**: An end-to-end automated compliance checking system comprising:
-   - Structure Predictor: Parses natural language regulations into Compliance Units (CUs)
-   - Code Generator: Translates CU structures into executable Python code
-   - Information Retriever: Fetches relevant company data
-   - Report Generator: Produces user-friendly compliance assessments
+## FinCheck Pipeline
 
-3. **Comprehensive Evaluation**: Establishes strong benchmarks on regulation structuring and code generation tasks, with GLM-4-9B-0414 achieving best performance on regulation structuring and Qwen3-8B performing best on compliance code generation.
-
-## Technical Innovations
-
-- **Modular Compliance Unit Design**: Decomposes complex regulatory clauses into minimal actionable units amenable to computational assessment
-- **Multi-layered Relation Annotation**: Annotates logical relations between compliance units to support advanced compositional reasoning  
-- **Code Generation Templates**: Creates Python automation tasks based on 68 distinct logic patterns, simulating realistic compliance scenarios
-
-## Results
-
-Experimental evaluation demonstrates significant performance improvements on Chinese financial compliance automation tasks, providing crucial support for RegTech applications in Chinese financial markets.
-
-*This research not only provides a valuable new resource and strong benchmark results but also opens new avenues for developing safer, more scalable, and reliable RegTech solutions.*
+The paper introduces FinCheck, a pipeline system for automated compliance checking that processes natural language regulations and generates executable compliance code.

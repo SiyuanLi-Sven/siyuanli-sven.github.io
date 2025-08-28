@@ -1,8 +1,20 @@
 ---
 title: 'Interpreting Fedspeak with Confidence: A LLM-Based Uncertainty-Aware Framework'
 authors:
+  - Rui Yao
+  - Qi Chai
+  - Jinhai Yao
   - admin
+  - Junhao Chen
+  - Qi Zhang
+  - Hao Wang
 author_notes:
+  - 'Equal contribution'
+  - 'Equal contribution'
+  - 'Equal contribution'
+  - ''
+  - ''
+  - ''
   - ''
 date: '2025-08-12T00:00:00Z'
 doi: ''
@@ -37,47 +49,16 @@ projects: []
 slides: ""
 ---
 
-## Overview
+## Abstract
 
-This paper introduces an innovative **uncertainty-aware framework** for interpreting Federal Reserve communications ("Fedspeak"), combining large language models with monetary policy domain expertise to achieve more reliable and transparent policy stance classification.
+This paper proposes an LLM-based uncertainty-aware framework for interpreting Federal Reserve communications (Fedspeak) and classifying monetary policy stance. The framework incorporates domain-specific reasoning grounded in monetary policy transmission mechanisms and introduces dynamic uncertainty decoding to assess prediction confidence.
 
-## Key Contributions
+## Methodology
 
-1. **Domain-Specific Reasoning Integration**: Incorporates monetary policy transmission mechanism knowledge to enrich semantic understanding of Federal Reserve communications, emulating how human experts analyze policy stances.
+- **Domain Knowledge Integration**: Incorporates monetary policy transmission mechanism knowledge
+- **Uncertainty Quantification**: Decomposes perceptual uncertainty into cognitive risk and environmental ambiguity
+- **Dynamic Decoding**: Adaptively selects decoding strategies based on model confidence levels
 
-2. **Dynamic Uncertainty Decoding Module**: Introduces a novel uncertainty quantification approach that:
-   - Decomposes perceptual uncertainty into cognitive risk and environmental ambiguity
-   - Adaptively selects decoding strategies based on model confidence
-   - Provides reliability indicators for predictions
+## Results
 
-3. **Comprehensive Evaluation Framework**: Establishes rigorous evaluation metrics combining:
-   - Traditional performance measures (Macro-F1, Weighted-F1)
-   - Uncertainty calibration assessment
-   - Statistical validation of uncertainty-error correlations
-
-## Technical Innovations
-
-### Monetary Policy Transmission Path Modeling
-- **Financial Entity Relations**: Decomposes Fedspeak into atomic relations (CAUSE, COND, EVID, PURP, ACT, COMP)
-- **Transmission Channels**: Models policy signals through credit, asset price, and aggregate demand channels
-- **Structured Templates**: Uses economic reasoning templates to generate policy advice and explanations
-
-### Uncertainty-Aware Prediction
-- **Perceptual Uncertainty (PU)**: PU = EA × CR, where EA is environmental ambiguity and CR is cognitive risk
-- **Adaptive Strategies**: Aggressive decoding for low uncertainty, conservative sampling for high uncertainty
-- **Reliability Signals**: Provides confidence indicators to guide human-AI collaboration
-
-## Experimental Results
-
-- **State-of-the-art Performance**: Achieves 0.7327 Macro-F1 and 0.7426 Weighted-F1 on FOMC dataset
-- **Uncertainty Validation**: Statistical analysis confirms significant positive correlation between perceptual uncertainty and model error rates (p < 0.001)
-- **Ablation Studies**: Transmission path reasoning contributes most significantly to performance improvements
-
-## Practical Implications
-
-The framework enables:
-- **Enhanced Financial Forecasting**: More reliable interpretation of Fed communications for market analysis
-- **Risk-Aware Trading**: Uncertainty signals help identify when to seek human expert consultation
-- **Transparent AI**: Provides interpretable reasoning paths grounded in economic theory
-
-*This work bridges the gap between economic domain expertise and modern NLP techniques, offering a principled approach to financial text analysis with quantified confidence measures.*
+The framework achieves competitive performance on policy stance analysis tasks, with uncertainty measures providing reliability indicators for predictions.
