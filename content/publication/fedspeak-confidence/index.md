@@ -2,7 +2,10 @@
 title: 'Interpreting Fedspeak with Confidence: A LLM-Based Uncertainty-Aware Framework'
 authors:
   - admin
+author_notes:
+  - ''
 date: '2025-08-12T00:00:00Z'
+doi: ''
 publishDate: '2025-01-01T00:00:00Z'
 publication_types: ['paper-conference']
 publication: In *arXiv preprint*
@@ -20,6 +23,12 @@ links:
     url: https://arxiv.org/abs/2508.08001
 url_pdf: 'https://arxiv.org/pdf/2508.08001.pdf'
 url_code: 'https://github.com/yuuki20001/FOMC-sentiment-path'
+url_dataset: ''
+url_poster: ''
+url_project: ''
+url_slides: ''
+url_source: ''
+url_video: ''
 image:
   caption: 'Fedspeak Analysis Framework'
   focal_point: ''

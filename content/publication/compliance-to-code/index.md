@@ -2,7 +2,10 @@
 title: 'Compliance-to-Code: Enhancing Financial Compliance Checking via Code Generation'
 authors:
   - admin
+author_notes:
+  - ''
 date: '2025-05-19T00:00:00Z'
+doi: ''
 publishDate: '2025-01-01T00:00:00Z'
 publication_types: ['paper-conference']
 publication: In *arXiv preprint*
@@ -19,6 +22,12 @@ links:
     url: https://arxiv.org/abs/2505.19804
 url_pdf: 'https://arxiv.org/pdf/2505.19804.pdf'
 url_code: 'https://github.com/AlexJJJChen/Compliance-to-Code'
+url_dataset: 'https://huggingface.co/datasets/GPS-Lab/Compliance-to-Code'
+url_poster: ''
+url_project: ''
+url_slides: ''
+url_source: ''
+url_video: ''
 image:
   caption: 'Compliance-to-Code Framework'
   focal_point: ''
