@@ -241,10 +241,96 @@ url_video: ''
 3. **YAML语法验证**: 特别注意引号转义和特殊字符
 4. **渐进式测试**: 先复制模板，再修改内容，最后添加详细信息
 
+## 第二轮问题发现 - Hugo Blox Builder深层限制分析
+
+### 问题背景 (2025-08-30)
+在成功解决publication字段问题并稳定运行后，尝试进行以下改进：
+1. 修改首页"Publications"字样为"Papers"
+2. 在publication页面嵌入交互式图表
+
+### 新发现的严格限制
+
+#### 1. 首页Section标题的硬依赖问题
+
+**现象**：
+- 修改`content/_index.md`中的section标题会立即导致网站崩溃
+- 具体影响的标题：
+  - `title: Featured Publications` → `title: Featured Papers`
+  - `title: Recent Publications` → `title: Recent Papers`
+
+**症状**：
+- 修改后网站立即进入"蓝色标题"失败状态
+- 无任何错误提示，整个网站无法正常渲染
+
+**根本原因**：
+Hugo Blox Builder主题对特定的section标题有**硬编码依赖**，这些标题不能被修改。
+
+#### 2. Publication目录标题依赖
+
+**现象**：
+- 修改`content/publication/_index.md`中的`title: Publications`为`title: Papers`同样导致崩溃
+- 即使修改看起来很小也会影响整个网站稳定性
+
+#### 3. Publication内容页面HTML限制
+
+**尝试**：在`content/publication/compliance-to-code/index.md`中添加iframe嵌入交互式图表
+
+**失败原因**：
+```markdown
+# 尝试的代码
+<div style="text-align: center; margin: 2rem 0;">
+  <iframe 
+    src="/BSE04_ComplianceUnitGraph.html" 
+    width="100%" 
+    height="600px">
+  </iframe>
+</div>
+```
+
+**结果**：立即导致网站进入"蓝色标题"失败状态
+
+**分析**：
+- Hugo Blox Builder对publication页面的内容结构有严格要求
+- 不允许插入自定义HTML元素，包括iframe
+- 必须严格遵循Markdown格式和主题预期的内容结构
+
+### 核心发现总结
+
+#### Hugo Blox Builder的严格限制
+1. **Section标题硬依赖**：首页的collection标题不可修改
+2. **目录标题限制**：各section的_index.md标题不可修改  
+3. **HTML内容限制**：publication页面不允许自定义HTML
+4. **结构完整性要求**：任何偏离模板的修改都可能导致崩溃
+
+#### 安全修改原则
+1. **只修改纯文本内容**：abstract、summary等纯文本字段相对安全
+2. **保持模板结构**：不修改任何标题、字段名、HTML结构
+3. **使用标准Markdown**：避免自定义HTML、CSS、JavaScript
+4. **渐进式测试**：每次只修改一个小内容，立即测试
+
+#### 替代方案建议
+1. **文字修改需求**：考虑使用CSS覆盖或接受现有文字
+2. **内容嵌入需求**：使用外部链接而非嵌入方式
+3. **图表展示需求**：转换为静态图片或使用Hugo支持的shortcode
+
+### 实战教训
+
+#### 错误假设的纠正
+- ❌ **错误假设**：只有frontmatter字段有限制，内容区域可以自由修改
+- ✅ **实际情况**：Hugo Blox Builder对整个文件结构都有严格要求
+
+- ❌ **错误假设**：标题只是显示文本，可以随意修改
+- ✅ **实际情况**：标题是主题内部逻辑的关键部分，有硬依赖
+
+#### 调试策略优化
+1. **快速回滚机制**：发现问题立即回滚到最后稳定版本
+2. **最小化修改原则**：每次只修改最小单元
+3. **多版本对比**：通过git历史找到真正的稳定基线
+
 ---
 
 **记录时间**: 2025-08-28  
-**最后更新**: 2025-08-29  
-**当前状态**: ✅ 问题完全解决，长期稳定运行  
-**根本原因**: Hugo frontmatter字段结构不完整 + YAML语法错误  
-**解决方案**: 严格按照模板字段结构 + 正确的YAML转义
+**最后更新**: 2025-08-30  
+**当前稳定版本**: `2f14f8e` - "Hide placeholder templates by setting draft=true"  
+**核心原因**: Hugo Blox Builder主题架构限制远比预期严格  
+**应对策略**: 严格遵循模板结构，避免任何结构性修改
