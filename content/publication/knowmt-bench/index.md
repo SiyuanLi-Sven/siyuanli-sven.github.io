@@ -22,9 +22,9 @@ author_notes:
   - ''
   - ''
   - ''
-date: '2024-09-30T00:00:00Z'
+date: '2024-09-26T00:00:00Z'
 doi: '10.48550/arXiv.2509.21856'
-publishDate: '2024-09-30T00:00:00Z'
+publishDate: '2024-09-26T00:00:00Z'
 publication_types: ['paper-conference']
 publication: In *arXiv preprint*
 publication_short: In *arXiv*
@@ -49,7 +49,7 @@ url_slides: ''
 url_source: ''
 url_video: ''
 image:
-  caption: 'KnowMT-Bench Benchmark Framework'
+  caption: 'KnowMT-Bench: Multi-Turn Knowledge-Intensive QA Framework'
   focal_point: ''
   preview_only: false
 projects: []
